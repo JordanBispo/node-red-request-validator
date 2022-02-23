@@ -3,14 +3,15 @@ module.exports = function (RED) {
         RED.nodes.createNode(this, config);
         var node = this;
 
-        this.editor = RED.editor.createEditor({
-            id: 'node-input-json-editor',
-            mode: 'ace/mode/text',
-            value: this.text
-        });
-
         node.on('input', function (msg) {
-            msg.payload = msg.payload.toLowerCase();
+            msg['valid'] = config;
+            if (config.query) {
+                let query = JSON.parse(config.query);
+                let queryKeys = Object.keys(query);
+                let inputQuery = msg.req.query;
+                let inputQueryKeys = Object.keys(inputQuery);
+
+            }
             node.send(msg);
         });
     }
