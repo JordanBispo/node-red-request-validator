@@ -1,26 +1,55 @@
 <script type="text/javascript">
-    RED.nodes.registerType('validator', {
+        RED.nodes.registerType('request-validator', {
         category: 'function',
         color: '#a6bbcf',
         defaults: {
-            name: { value: "" }
+            name: { value: "" },
+            query: {
+                value: {
+                    "params": {
+                        required: false,
+                        type: "string"
+                    }
+                }
+            },
+            method: { value: "GET" },
+            headers: {
+                value: {
+                    Authorization: {
+                        required: false,
+                        type: "string"
+                    }
+                }
+            },
+            body: {
+                value: {
+                    "params": {
+                        required: false,
+                        type: "string"
+                    }
+                }
+            },
         },
         inputs: 1,
         outputs: 1,
         icon: "file.png",
         label: function () {
-            return this.name || "validator";
+            return this.name || "request-validator";
         }
     });
 </script>
 
-<script type="text/html" data-template-name="validator">
+<script type="text/html" data-template-name="request-validator">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Request</label>
         <input type="text" id="node-input-name" placeholder="Request">
     </div>
+    <div class="form-row">
+        <label for="node-input-query"><i class="fa fa-tag"></i> Query Params</label>
+        <input type="text" id="node-input-example2">
+    </div>
 </script>
 
-<script type="text/html" data-help-name="validator">
+<script type="text/html" data-help-name="request-validator">
     <p>validates the data coming in request.</p>
 </script>
