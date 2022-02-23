@@ -1,5 +1,5 @@
 {
-  "name": "@aeroscan/node-red-validator",
+  "name": "node-red-request-validation",
   "description": "a node that validates the data coming in request.",
   "author": "Jordan R.S. Bispo",
   "version": "1.0.0",
@@ -8,12 +8,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordanBispo/node-red-validator.git"
+  },
   "keywords": [
     "node-red"
   ],
-  "node-red": {
-    "nodes": {
-      "validator": "validator.js"
-    }
-  }
+  "bugs": {
+    "url": "https://github.com/JordanBispo/node-red-validator/issues"
+  },
+  "homepage": "https://github.com/JordanBispo/node-red-validator#readme"
 }
