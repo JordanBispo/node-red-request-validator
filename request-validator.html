@@ -4,37 +4,39 @@
         color: '#a6bbcf',
         defaults: {
             name: { value: "" },
-            query: {
-                value: {
-                    "params": {
-                        required: false,
-                        type: "string"
-                    }
-                }
-            },
-            method: { value: "GET" },
-            headers: {
-                value: {
-                    Authorization: {
-                        required: false,
-                        type: "string"
-                    }
-                }
-            },
-            body: {
-                value: {
-                    "params": {
-                        required: false,
-                        type: "string"
-                    }
-                }
-            },
+            query: { value: JSON.stringify({ a: 123 }), type: "json" },
+            body: { value: JSON.stringify({ a: 123 }), type: "json" },
+            method: { value: "GET", required: true }
         },
         inputs: 1,
         outputs: 1,
         icon: "file.png",
         label: function () {
             return this.name || "request-validator";
+            },
+            oneditprepare: function () {
+                $("#node-input-mth").typedInput({
+                    types: [
+                        {
+                            value: "method",
+                            options: [
+                                { value: "GET", label: "GET" },
+                                { value: "POST", label: "POST" },
+                                { value: "PUT", label: "PUT" },
+                                { value: "DELETE", label: "DELETE" }
+                            ]
+                        }
+                    ]
+                })
+                $("#node-input-query").typedInput({
+                    type: "json",
+                    types: ["json"]
+                })
+                $("#node-input-bd").typedInput({
+                    type: "json",
+                    types: ["json"]
+                })
+            
         }
     });
 </script>
@@ -45,8 +47,16 @@
         <input type="text" id="node-input-name" placeholder="Request">
     </div>
     <div class="form-row">
-        <label for="node-input-query"><i class="fa fa-tag"></i> Query Params</label>
-        <input type="text" id="node-input-example2">
+        <label for="node-input-mth"><i></i>Method</label>
+        <input type="text" id="node-input-mth">
+        </div>
+        <div class="form-row">
+            <label for="node-input-query"><i></i> Query Params</label>
+            <input type="json" id="node-input-query" placeholder='{" paramName": {"type": "string" , required: false }}'>
+        </div>
+        <div class="form-row">
+            <label for="node-input-bd"><i></i> Body Params</label>
+            <input type="json" id="node-input-bd" placeholder='{" paramName": {"type": "string" , required: false }}'>
     </div>
 </script>
 
