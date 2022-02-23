@@ -1,0 +1,19 @@
+{
+  "name": "@aeroscan/node-red-validator",
+  "description": "a node that validates the data coming in request.",
+  "author": "Jordan R.S. Bispo",
+  "version": "1.0.0",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node-red"
+  ],
+  "node-red": {
+    "nodes": {
+      "validator": "validator.js"
+    }
+  }
+}
