@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/JordanBispo/node-red-validator/issues"
   },
-  "homepage": "https://github.com/JordanBispo/node-red-validator#readme"
+  "homepage": "https://github.com/JordanBispo/node-red-validator#readme",
+  "node-red": {
+    "nodes": {
+      "request-validator": "request-validator.js"
+    }
+  }
 }

@@ -1,5 +1,5 @@
 module.exports = function (RED) {
-    function Validator(config) {
+    function RequestValidator(config) {
         RED.nodes.createNode(this, config);
         var node = this;
         node.on('input', function (msg) {
@@ -7,5 +7,5 @@ module.exports = function (RED) {
             node.send(msg);
         });
     }
-    RED.nodes.registerType("validator", Validator);
+    RED.nodes.registerType("request-validator", RequestValidator);
 }
