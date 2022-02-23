@@ -7,5 +7,12 @@ module.exports = function (RED) {
             node.send(msg);
         });
     }
-    RED.nodes.registerType("request-validator", RequestValidator);
+    RED.nodes.registerType("request-validator", RequestValidator, {
+        settings: {
+            sampleNodeColour: {
+                value: "red",
+                exportable: true
+            }
+        }
+    });
 }
