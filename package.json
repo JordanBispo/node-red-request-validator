@@ -2,9 +2,9 @@
   "name": "node-red-request-validator",
   "description": "a node that validates the data coming in request.",
   "author": "Jordan R.S. Bispo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "ISC",
-  "main": "index.js",
+  "main": "request-validator.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +13,10 @@
     "url": "git+https://github.com/JordanBispo/node-red-validator.git"
   },
   "keywords": [
-    "node-red"
+    "node-red",
+    "validator",
+    "request",
+    "request-validator"
   ],
   "bugs": {
     "url": "https://github.com/JordanBispo/node-red-validator/issues"
