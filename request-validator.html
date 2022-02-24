@@ -1,15 +1,15 @@
 <script type="text/javascript">
         RED.nodes.registerType('request-validator', {
         category: 'function',
-        color: '#a6bbcf',
+            color: '#4965E2',
         defaults: {
             name: { value: "" },
             query: { value: "", required: false },
-            bd: { value: "", required: false },
+            reqbody: { value: "", required: false },
             method: { value: "GET", required: true }
         },
         inputs: 1,
-        outputs: 1,
+            outputs: 2,
         icon: "file.png",
         label: function () {
             return this.name || "request-validator";
@@ -32,7 +32,7 @@
                     type: "json",
                     types: ["json"]
                 })
-                $("#node-input-bd").typedInput({
+                $("#node-input-reqbody").typedInput({
                     type: "json",
                     types: ["json"]
                 })
@@ -55,8 +55,8 @@
             <input type="json" id="node-input-query" placeholder='{" paramName": {"type": "string" , required: false }}'>
         </div>
         <div class="form-row">
-            <label for="node-input-bd"><i></i> Body Params</label>
-            <input type="json" id="node-input-bd" placeholder='{" paramName": {"type": "string" , required: false }}'>
+            <label for="node-input-reqbody"><i></i> Body Params</label>
+            <input type="json" id="node-input-reqbody" placeholder='{" paramName": {"type": "string" , required: false }}'>
     </div>
 </script>
 
