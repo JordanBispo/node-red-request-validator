@@ -1,10 +1,15 @@
 # node-red-request-validator
 A Node-RED custom node, to create schema for validate request fields (httpbIn)
 
+
+![image](https://img.shields.io/npm/v/node-red-contrib-request-validator?logo=npm&style=for-the-badge)
+![image](https://img.shields.io/node/v/node-red-contrib-request-validator?logo=node.js&style=for-the-badge)
+![image](https://img.shields.io/npm/l/node-red-contrib-request-validator?style=for-the-badge)
+
 ![image](https://img.shields.io/badge/Node--Red-8F0000?style=for-the-badge&logo=nodered&logoColor=white)
 ![image](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 
-![image](https://img.shields.io/github/license/JordanBispo/node-red-validator?style=for-the-badge&logo=npm)
+
 ## Requirements 
 * node-red  version >=1.0.0
 
