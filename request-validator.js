@@ -1,5 +1,5 @@
 
-const { validator } = require('./lib/validator')
+const { QueryValidator, BodyValidator } = require('./lib/validator')
 
 const isBadRequest = (schema = {}, input = {}) => {
     const schemaKeys = Object.keys(schema)
@@ -45,11 +45,12 @@ module.exports = function (RED) {
 
                 if (config.query) {
 
-                    let querySchema = JSON.parse(config.query);
-                    const validatorResult = Validator(querySchema, msg.req?.query || {})
+                    const querySchema = JSON.parse(config.query);
+                    const inputQuery = msg.req?.query || {}
+                    const hasInvalidPropriety = QueryValidator(inputQuery, querySchema)
 
-                    if (!!validatorResult) {
-                        node.send(reject(msg, { error: validatorResult + ' in query' }))
+                    if (!!hasInvalidPropriety) {
+                        node.send(reject(msg, { error: hasInvalidPropriety }))
                         return
                     }
 
@@ -57,11 +58,12 @@ module.exports = function (RED) {
 
                 if (config.reqbody) {
 
-                    let bodySchema = JSON.parse(config.reqbody);
-                    const hasInvalidPropriety = validate(msg.req?.body || {}, bodySchema)
+                    const bodySchema = JSON.parse(config.reqbody);
+                    const inputBody = msg.req?.body || {}
+                    const hasInvalidPropriety = BodyValidator(inputBody, bodySchema)
 
                     if (!!hasInvalidPropriety) {
-                        node.send(reject(msg, { error: hasInvalidPropriety + ', in body' }))
+                        node.send(reject(msg, { error: hasInvalidPropriety }))
                         return
                     }
 
@@ -75,6 +77,7 @@ module.exports = function (RED) {
                 node.error(error)
                 node.trace("\nError Trace")
                 node.send(reject(msg, { error: error }, 500))
+                return
             }
 
         });

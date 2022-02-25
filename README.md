@@ -1,5 +1,5 @@
-# node-red-request-validator
-A Node-RED custom node, to create schema for validate request fields (httpbIn)
+# node-red-contrib-request-validator
+A Node-RED custom node, to create schema for validate request fields
 
 
 ![image](https://img.shields.io/npm/v/node-red-contrib-request-validator?logo=npm&style=for-the-badge)
@@ -13,13 +13,13 @@ A Node-RED custom node, to create schema for validate request fields (httpbIn)
 ## Requirements 
 * node-red  version >=1.0.0
 
-## Instalation
+## Installation
 #### Install via Node-RED Manage Palette
-`node-red-request-validator`
+`node-red-contrib-request-validator`
 
 #### Install via npm
 ```bash
 $ cd ~/.node-red
-$ npm install node-red-request-validator
+$ npm install node-red-contrib-request-validator
 # then restart node-red
 ```
