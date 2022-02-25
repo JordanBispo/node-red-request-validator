@@ -19,7 +19,7 @@
     "node-red",
     "validator",
     "request",
-    "request-validator"
+    "request"
   ],
   "bugs": {
     "url": "https://github.com/JordanBispo/node-red-validator/issues"
