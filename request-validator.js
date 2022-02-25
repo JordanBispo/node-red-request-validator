@@ -1,20 +1,4 @@
-
 const { QueryValidator, BodyValidator } = require('./lib/validator')
-
-const isBadRequest = (schema = {}, input = {}) => {
-    const schemaKeys = Object.keys(schema)
-    if (schemaKeys.length < 1) return false
-    for (let key of schemaKeys) {
-        if (Object.keys(input)?.includes(key)) {
-            if (typeof input[key] !== schema[key].type) {
-                return `${key} must be a ${schema[key].type}`
-            }
-        } else if (!!schema[key].required) {
-            return `${key} are required`
-        }
-    }
-    return false
-}
 
 const next = (msg) => {
     if (msg['_payload']) msg['payload'] = msg['_payload']
@@ -83,7 +67,7 @@ module.exports = function (RED) {
         });
 
     }
-    RED.nodes.registerType("request-validator", RequestValidator, {
+    RED.nodes.registerType("request validator", RequestValidator, {
         settings: {
             sampleNodeColour: {
                 value: "red",

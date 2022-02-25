@@ -1,7 +1,8 @@
 <script type="text/javascript">
-        RED.nodes.registerType('request-validator', {
+
+    const nodeTypeOptions = {
+        color: '#5C9EDB',
         category: 'function',
-            color: '#5068D3',
         defaults: {
             name: { value: "" },
             query: { value: "", required: false },
@@ -9,46 +10,49 @@
             method: { value: "GET", required: true }
         },
         inputs: 1,
-            outputs: 2,
-            icon: "font-awesome/fa-check-square-o",
+        outputs: 2,
+        icon: "font-awesome/fa-check-square-o",
         label: function () {
-            return this.name || "request-validator";
-            },
-            oneditprepare: function () {
-                $("#node-input-mth").typedInput({
-                    types: [
-                        {
-                            value: "method",
-                            options: [
-                                { value: "GET", label: "GET" },
-                                { value: "POST", label: "POST" },
-                                { value: "PUT", label: "PUT" },
-                                { value: "DELETE", label: "DELETE" }
-                            ]
-                        }
-                    ]
-                })
-                $("#node-input-query").typedInput({
-                    type: "json",
-                    types: ["json"]
-                })
-                $("#node-input-reqbody").typedInput({
-                    type: "json",
-                    types: ["json"]
-                })
-            
+            return this.name || "request validator";
+        },
+        oneditprepare: function () {
+            $("#node-input-method").typedInput({
+                types: [
+                    {
+                        value: "method",
+                        options: [
+                            { value: "GET", label: "GET" },
+                            { value: "POST", label: "POST" },
+                            { value: "PUT", label: "PUT" },
+                            { value: "DELETE", label: "DELETE" }
+                        ]
+                    }
+                ]
+            })
+            $("#node-input-query").typedInput({
+                type: "json",
+                types: ["json"]
+            })
+            $("#node-input-reqbody").typedInput({
+                type: "json",
+                types: ["json"]
+            })
+
         }
-    });
+        }
+
+        RED.nodes.registerType('request validator', nodeTypeOptions);
+
 </script>
 
-<script type="text/html" data-template-name="request-validator">
+<script type="text/html" data-template-name="request validator">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Request</label>
         <input type="text" id="node-input-name" placeholder="Request">
     </div>
     <div class="form-row">
-        <label for="node-input-mth"><i></i>Method</label>
-        <input type="text" id="node-input-mth">
+        <label for="node-input-method"><i></i>Method</label>
+        <input type="text" id="node-input-method">
         </div>
         <div class="form-row">
             <label for="node-input-query"><i></i> Query Params</label>
@@ -60,6 +64,6 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="request-validator">
+<script type="text/html" data-help-name="request validator">
     <p>validates the data coming in request.</p>
 </script>
