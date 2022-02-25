@@ -2,7 +2,7 @@
   "name": "node-red-contrib-request-validator",
   "description": "a node that validates the data coming in request.",
   "author": "Jordan R.S. Bispo",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "ISC",
   "main": "request-validator.js",
   "scripts": {
