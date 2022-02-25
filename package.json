@@ -2,8 +2,8 @@
   "name": "node-red-contrib-request-validator",
   "description": "a node that validates the data coming in request.",
   "author": "Jordan R.S. Bispo",
-  "version": "0.2.0",
-  "license": "MIT",
+  "version": "0.2.1",
+  "license": "ISC",
   "main": "request-validator.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
