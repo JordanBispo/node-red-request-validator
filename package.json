@@ -30,7 +30,7 @@
   "node-red": {
     "version": ">=1.0.0",
     "nodes": {
-      "request-validator": "request-validator.js"
+      "RequestValidator": "RequestValidator.js"
     }
   }
 }

@@ -67,7 +67,7 @@ module.exports = function (RED) {
         });
 
     }
-    RED.nodes.registerType("request validator", RequestValidator, {
+    RED.nodes.registerType("RequestValidator", RequestValidator, {
         settings: {
             sampleNodeColour: {
                 value: "red",
