@@ -31,10 +31,10 @@ module.exports = function (RED) {
 
                     const querySchema = JSON.parse(config.query);
                     const inputQuery = msg.req?.query || {}
-                    const hasInvalidPropriety = QueryValidator(inputQuery, querySchema)
+                    const hasInvalidProperty = QueryValidator(inputQuery, querySchema)
 
-                    if (!!hasInvalidPropriety) {
-                        node.send(reject(msg, { error: hasInvalidPropriety }))
+                    if (!!hasInvalidProperty) {
+                        node.send(reject(msg, { error: hasInvalidProperty }))
                         return
                     }
 
@@ -44,10 +44,10 @@ module.exports = function (RED) {
 
                     const bodySchema = JSON.parse(config.reqbody);
                     const inputBody = msg.req?.body || {}
-                    const hasInvalidPropriety = BodyValidator(inputBody, bodySchema)
+                    const hasInvalidProperty = BodyValidator(inputBody, bodySchema)
 
-                    if (!!hasInvalidPropriety) {
-                        node.send(reject(msg, { error: hasInvalidPropriety }))
+                    if (!!hasInvalidProperty) {
+                        node.send(reject(msg, { error: hasInvalidProperty }))
                         return
                     }
 
