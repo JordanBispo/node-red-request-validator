@@ -10,7 +10,8 @@
             reqbody: { value: "", required: false },
             method: { value: "GET", required: true },
             includeHeader: { value: false, required: false },
-            headerSchema: { value: "", required: false }
+            headerSchema: { value: "", required: false },
+            convert: false,
         },
         inputs: 1,
         outputs: 2,
@@ -75,12 +76,16 @@
         <div class="form-row">
             <label for="node-input-reqbody"><i></i> Body Params</label>
             <input type="json" id="node-input-reqbody" placeholder='{"email":{"type":"string"}}'>
-    </div>
+        </div>
+        <div class="form-row">
+            <label for="node-input-convert"><i></i> Convert Body</label>
+            <input type="checkbox" id="node-input-convert">
+        </div>
 </script>
 
 <script type="text/markdown" data-help-name="RequestValidator">
 Create Schemas to validate request method, body and query parameters.
-Schemas are configured in this node Properties. 
+Schemas are configured in this node Properties.
 
 ## docs
 [![image](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/node-red-contrib-request-validator)
@@ -98,8 +103,8 @@ Schemas are configured in this node Properties.
 
 ### Outputs
 
-1. Valid Request (top output) 
-    * `msg (any)` - the original msg of request.
+1. Valid Request (top output)
+    * `msg (any)` - the original msg of request if convert is true, elements are type-casted.
 2. Invalid Request (bottom output)
     * `payload (json)` - the error message.
     * `statusCode (400 | 500)` - the status code of error.
