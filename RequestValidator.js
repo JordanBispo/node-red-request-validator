@@ -1,4 +1,5 @@
 const { QueryValidator, BodyValidator } = require('./lib/validator')
+const { BodySanitizer } = require('./lib/sanitizer')
 
 const next = (msg) => {
     if (msg['_payload']) msg['payload'] = msg['_payload']
@@ -30,7 +31,7 @@ module.exports = function (RED) {
                 if (config.query) {
 
                     const querySchema = JSON.parse(config.query);
-                    const inputQuery = msg.req?.query || {}
+                    const inputQuery = msg.req?.query || {};
                     const hasInvalidPropriety = QueryValidator(inputQuery, querySchema)
 
                     if (!!hasInvalidPropriety) {
@@ -43,8 +44,12 @@ module.exports = function (RED) {
                 if (config.reqbody) {
 
                     const bodySchema = JSON.parse(config.reqbody);
-                    const inputBody = msg.req?.body || {}
-                    const hasInvalidPropriety = BodyValidator(inputBody, bodySchema)
+                    const inputBody = msg.payload || {};
+                    const hasInvalidPropriety = BodyValidator(inputBody, bodySchema);
+                    if (config.convert) {
+                        const newBody = BodySanitizer(inputBody, bodySchema);
+                        msg['_payload'] = newBody
+                    }
 
                     if (!!hasInvalidPropriety) {
                         node.send(reject(msg, { error: hasInvalidPropriety }))

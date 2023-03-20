@@ -64,7 +64,7 @@ describe('RequestValidator Node', function () {
           done(err);
         }
       });
-      n1.receive({ req : {body: {} }, payload: {} });
+      n1.receive({ payload: {} });
     });
   });
   it('should accept number on number schema', function (done) {
@@ -77,13 +77,32 @@ describe('RequestValidator Node', function () {
       var n1 = helper.getNode("n1");
       n2.on("input", function (msg) {
         try {
-          msg.should.have.property('payload', {"id": "5"});
+          msg.should.have.property('payload', {"id": 5});
           done();
         } catch(err) {
           done(err);
         }
       });
-      n1.receive({ req : {body: {"id": "5"} }, payload: {"id":"5"} });
+      n1.receive({ payload: {"id":5} });
+    });
+  });
+  it('should accept number as string on number schema and keep as string if convert is false', function (done) {
+    var flow = [
+      { id: "n1", type: "RequestValidator", name: "lower-case",wires:[["n2"],["n2"]],reqbody: "{\"id\":{\"type\":\"number\",\"required\":\"true\"}}", convert: false},
+      { id: "n2", type: "helper" }
+    ];
+    helper.load(requestValidator, flow, function () {
+      var n2 = helper.getNode("n2");
+      var n1 = helper.getNode("n1");
+      n2.on("input", function (msg) {
+        try {
+          msg.should.have.property('payload', {"id": 5});
+          done();
+        } catch(err) {
+          done(err);
+        }
+      });
+      n1.receive({ payload: {"id":5} });
     });
   });
   it('should not accept non number on number schema', function (done) {
@@ -104,7 +123,26 @@ describe('RequestValidator Node', function () {
           done(err);
         }
       });
-      n1.receive({ req : {body: {"id": "a"} }, payload: {"id":"a"} });
+      n1.receive({ payload: {"id":"a"} });
+    });
+  });
+  it("should accept number string on number schema as number if convert is true", function (done) {
+    var flow = [
+      { id: "n1", type: "RequestValidator", name: "lower-case",wires:[["n2"],["n2"]],reqbody: "{\"id\":{\"type\":\"number\",\"required\":\"true\"}}",convert: true},
+      { id: "n2", type: "helper" }
+    ];
+    helper.load(requestValidator, flow, function () {
+      var n2 = helper.getNode("n2");
+      var n1 = helper.getNode("n1");
+      n2.on("input", function (msg) {
+        try {
+          msg.should.have.property('payload', {"id": 5});
+          done();
+        } catch(err) {
+          done(err);
+        }
+      });
+      n1.receive({ payload: {"id":"5"} });
     });
   });
 });
