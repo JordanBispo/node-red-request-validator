@@ -2,7 +2,7 @@
   "name": "node-red-contrib-request-validator",
   "description": "a node-red custom node to create schemas to validate incoming requests data.",
   "author": "Jordan R.S. Bispo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "ISC",
   "main": "RequestValidator.js",
   "scripts": {
